@@ -15,7 +15,6 @@
  */
 package com.work.stock.service;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.work.stock.entity.Stock;
 import com.work.stock.repository.StockDAO;
 import io.seata.core.context.RootContext;
@@ -53,9 +52,10 @@ public class StockService {
         if (count == 0) {
             throw new RuntimeException("异常:模拟业务异常:stock branch exception");
         }
-        Stock stock = stockDAO.selectById(1);
+        Long id = 1L;
+        Stock stock = stockDAO.selectByPrimaryKey(id);
         stock.setNum(stock.getNum().subtract(BigDecimal.valueOf(count)));
         stock.setCreateTime(new Date());
-        stockDAO.updateById(stock);
+        stockDAO.updateByPrimaryKey(stock);
     }
 }
