@@ -33,7 +33,6 @@ import javax.annotation.Resource;
  * @date 2019/8/28 4:05 PM
  */
 @RestController
-@RequestMapping("order")
 public class OrderController {
 
     @Resource
@@ -46,7 +45,7 @@ public class OrderController {
      *
      * @return
      */
-    @RequestMapping("/placeOrder/commit")
+    @RequestMapping("/seata")
     public Boolean placeOrderCommit(Integer num) {
         orderService.placeOrder(num);
         return true;

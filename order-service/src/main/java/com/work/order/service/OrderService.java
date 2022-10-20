@@ -56,6 +56,10 @@ public class OrderService {
     @GlobalTransactional
     @Transactional(rollbackFor = Exception.class)
     public void placeOrder(Integer count) {
+        stockFeignClient.deduct(count);
+        if (count == 10) {
+            throw new RuntimeException("异常:模拟业务异常:order branch exception");
+        }
         System.out.println("全局xid" + RootContext.getXID());
         Order order = new Order();
         order.setNum(BigDecimal.TEN);
@@ -63,7 +67,7 @@ public class OrderService {
         order.setSn(UUID.randomUUID().toString());
         order.setCreateTime(new Date());
         orderDAO.insert(order);
-        stockFeignClient.deduct(count);
+
 
     }
 
