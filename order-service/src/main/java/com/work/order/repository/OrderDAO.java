@@ -16,8 +16,7 @@
 package com.work.order.repository;
 
 import com.work.order.model.Order;
-import org.springframework.stereotype.Repository;
-import tk.mybatis.mapper.common.Mapper;
+
 
 /**
  * Program Name: springcloud-nacos-seata
@@ -29,6 +28,14 @@ import tk.mybatis.mapper.common.Mapper;
  * @version 1.0
  * @date 2019/8/28 4:05 PM
  */
-public interface OrderDAO extends Mapper<Order> {
+public interface OrderDAO {
+    int deleteByPrimaryKey(Long id);
+
+    int insert(Order order);
+
+    int insertSelective(Order order);
+
+    Order selectByPrimaryKey(Long id);
+
 
 }

@@ -57,10 +57,10 @@ public class OrderService {
     @Transactional(rollbackFor = Exception.class)
     public void placeOrder(Integer count) {
         stockFeignClient.deduct(count);
+        System.out.println("全局xid" + RootContext.getXID());
         if (count == 10) {
             throw new RuntimeException("异常:模拟业务异常:order branch exception");
         }
-        System.out.println("全局xid" + RootContext.getXID());
         Order order = new Order();
         order.setNum(BigDecimal.TEN);
         order.setPrice(BigDecimal.TEN);

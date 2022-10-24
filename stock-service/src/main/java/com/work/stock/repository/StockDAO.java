@@ -17,7 +17,6 @@ package com.work.stock.repository;
 
 
 import com.work.stock.entity.Stock;
-import tk.mybatis.mapper.common.Mapper;
 
 /**
  * Program Name: springcloud-nacos-seata
@@ -30,6 +29,9 @@ import tk.mybatis.mapper.common.Mapper;
  * @date 2019/8/28 4:05 PM
  */
 
-public interface StockDAO extends Mapper<Stock> {
+public interface StockDAO {
 
+    Stock selectByPrimaryKey(Long id);
+
+    void updateByPrimaryKey(Stock stock);
 }

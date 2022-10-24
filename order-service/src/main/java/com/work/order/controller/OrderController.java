@@ -16,7 +16,10 @@
 package com.work.order.controller;
 
 import com.work.order.feign.StockFeignClient;
+import com.work.order.model.SpringContextUtil;
 import com.work.order.service.OrderService;
+import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -49,6 +52,12 @@ public class OrderController {
     public Boolean placeOrderCommit(Integer num) {
         orderService.placeOrder(num);
         return true;
+    }
+
+    @GetMapping("/test")
+    public String test() {
+        HikariDataSource object =(HikariDataSource) SpringContextUtil.getBean("dataSource");
+        return "";
     }
 
     /**
