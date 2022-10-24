@@ -35,12 +35,13 @@ seata:
       username: nacos
       password: nacos
       namespace: 68468122-8955-45ee-a5b7-3d87972325b1
+  enable-auto-data-source-proxy: false
 feign:
   client:
     config:
       default:
         connectTimeout: 160000000
         readTimeout: 160000000
-
 mybatis:
   mapper-locations: classpath:mapper/*
+
